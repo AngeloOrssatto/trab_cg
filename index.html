@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>3D Rendering</title>
+    </head>
+
+    <body style="display: flex;"> 
+        <div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+            <script src="matrix.js" type="text/javascript"></script>
+            <script src="sketch.js" type="text/javascript"></script>
+        </div>
+        <div style="font-size: small;"> 
+            <h2>Parametros do objeto</h2>
+            <p>Número de lados do poligono superior e inferior</p>
+            <input type="number" id="nSides"></input>
+            <p>Altura</p>
+            <input type="number" id="height"></input>
+            <p>Raio da circunferencia superior</p>
+            <input type="number" id="radius"></input>
+            <p>Raio da circunferencia inferior</p>
+            <input type="number" id="radius2"></input>
+        </div>
+        <div style="margin-right: 5px;">
+            <button onclick="constructScene()">Montar cena</button>
+        </div>
+        <div style="margin-right: 10px;">
+            <button onclick="cleanScence()">Limpar cena</button>
+        </div>
+    </body>
+</html>
