@@ -1,4 +1,4 @@
-let angle = degrees_to_radians(0);
+let angle = degrees_to_radians(30);
 
 let index = 0
 let r = 0
@@ -6,6 +6,20 @@ let r2 = 0
 let a = 0
 let n = 0
 let h = 0
+
+let vrp = []
+let p = []
+let vecU = [1,1,1]
+let vecV = []
+let vecN = []
+
+// MatrixSRU2SRC = [
+//   [vecU[0], vecU[1], vecU[2], -prodEscalar(vrp, normalizaVetor(vecU))],
+//   [vecV[0], vecV[1], vecV[2], -prodEscalar(vrp, normalizaVetor(vecV))],
+//   [vecN[0], vecN[1], vecN[2], -prodEscalar(vrp, normalizaVetor(vecN))],
+//   [0,0,0,1]
+// ]
+
 
 function constructScene(){
   let aux = ''
@@ -18,23 +32,61 @@ function constructScene(){
   aux = document.getElementById('radius2').value
   r2 = parseFloat(aux)
   console.log(n, h, r, r2)
-  
-  console.log('a ', a)
+
+  aux = document.getElementById('xVRP').value
+  vrp[0] = parseFloat(aux)
+  aux = document.getElementById('yVRP').value
+  vrp[1] = parseFloat(aux)
+  aux = document.getElementById('zVRP').value
+  vrp[2] = parseFloat(aux)
+
+  aux = document.getElementById('xP').value
+  p[0] = parseFloat(aux)
+  aux = document.getElementById('yP').value
+  p[1] = parseFloat(aux)
+  aux = document.getElementById('zP').value
+  p[2] = parseFloat(aux)
+
+  console.log(vrp, p)
   a = 0
   while (a < 360) {
-    console.log(a, index, cos(degrees_to_radians(a)), sin(degrees_to_radians(a)))
-    points[index] = createVector(cos(degrees_to_radians(a))*r, sin(degrees_to_radians(a))*r, 0);
+    points[index] = createVector(cos(degrees_to_radians(a))*r, 0, sin(degrees_to_radians(a))*r);
+    //points[index] = [cos(degrees_to_radians(a))*r, sin(degrees_to_radians(a))*r, 0, 1];
     index++
     a+=(360/n)
   } 
   a = 0
   while (a < 360) {
-    console.log(a, index, cos(degrees_to_radians(a)), sin(degrees_to_radians(a)))
-    points[index] = createVector(cos(degrees_to_radians(a))*r2, sin(degrees_to_radians(a))*r2, h);
+    points[index] = createVector(cos(degrees_to_radians(a))*r2, h, sin(degrees_to_radians(a))*r2);
+    //points[index] = [cos(degrees_to_radians(a))*r2, sin(degrees_to_radians(a))*r2, h, 1];
     index++
     a+=(360/n)
   }
+
+  let N = subVector(vrp, p)
+  vecN = normalizaVetor(N)
+
+  let Y = [0,1,0]
+  let V = prodEscalar(Y, vecN)
+  V = multByScalar(vecN, V)
+  V = subVector(Y, V)
+  vecV = normalizaVetor(V)
+
+  vecU = prodVetorial(vecV, vecN)
+
+  console.log('n', vecN, 'v', vecV)
+
+  MatrixSRU2SRC = [
+    [vecU[0], vecV[0], vecN[0]],
+    [vecU[1], vecV[1], vecN[1]],
+    [vecU[2], vecV[2], vecN[2]],
+    [-prodEscalar(vrp, vecU), -prodEscalar(vrp, vecV), -prodEscalar(vrp, vecN)]
+  ]
+
+
+  
   console.log('pontos:', points)
+  console.log(MatrixSRU2SRC)
 }
 
 function cleanScence() {
@@ -63,6 +115,7 @@ function setup() {
 
 function draw() {
   background(0);
+
   translate(width / 2, height / 2);
 
   const rotationZ = [
@@ -88,9 +141,10 @@ function draw() {
 
   for (let i = 0; i < points.length; i++) {
     
-    let rotated = matmul(rotationY, points[i]);
-    // rotated = matmul(rotationX, rotated);
-    // rotated = matmul(rotationZ, rotated);
+    let rotated = matmul(MatrixSRU2SRC, points[i])
+    //rotated = matmul(rotationY, rotated);
+    //rotated = matmul(rotationX, rotated);
+    //let rotated = matmul(rotationZ, points[i]);
 
     const distance = 5
     const z = 1/(distance-rotated.z)
@@ -104,7 +158,7 @@ function draw() {
     projected2d.mult(10);
     projected[i] = projected2d;
     //point(projected2d.x, projected2d.y);
-    //angle+=0.0005
+    angle+=0.0005
   }
 
   //console.log(projected)
@@ -112,7 +166,7 @@ function draw() {
 
   for (let i = 0; i < projected.length; i++) {
     stroke(255);
-    strokeWeight(16);
+    strokeWeight(8);
     noFill();
     const v = projected[i];
     point(v.x, v.y);
@@ -125,21 +179,6 @@ function draw() {
     connect(i+n, ((i + 1) % n) + n, projected)
     connect(i, i+n, projected)
   }
-
-  // connect(0, 1, projected)
-  // connect(1, 2, projected)
-  // connect(2, 0, projected)
-  // connect(3, 4, projected)
-  // connect(4, 5, projected)
-  // connect(5, 3, projected)
-  // connect(0, 3, projected)
-  // connect(1, 4, projected)
-  // connect(2, 5, projected)
-  // for (let i = 0; i < 4; i++) {
-  //   connect(i, (i + 1) % 4, projected);
-  //   connect(i + 4, ((i + 1) % 4) + 4, projected);
-  //   connect(i, i + 4, projected);
-  // }
 
   //angle += 0.03;
 }
