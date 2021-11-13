@@ -16,16 +16,12 @@ function vecToMatrix(v) {
   function logMatrix(m) {
     const cols = m[0].length;
     const rows = m.length;
-    console.log(rows + 'x' + cols);
-    console.log('----------------');
     let s = '';
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < cols; j++) {
         s += m[i][j] + ' ';
       }
-      console.log(s);
     }
-    console.log();
   }
   
   function matmulvec(a, vec) {
@@ -43,9 +39,6 @@ function vecToMatrix(v) {
     let rowsA = a.length;
     let colsB = b[0].length;
     let rowsB = b.length;
-
-    //console.log('col a', colsA)
-    //console.log('rows b', rowsB)
   
     if (colsA !== rowsB) {
       console.error('Columns of A must match rows of B');
@@ -86,7 +79,6 @@ function prodVetorial(a, b){
   let prodVect = []
   for (let i = 0; i < a.length; i++){
     prodVect[i] = (a[(i+1)%a.length]*b[(i+2)%b.length])-(b[(i+1)%b.length]*a[(i+2)%a.length])
-    console.log(prodVect[i])
   }
   return prodVect;
 }

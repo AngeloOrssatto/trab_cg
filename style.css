@@ -1,0 +1,267 @@
+/* Estilo DIV objeto e vista*/
+#parametro {
+    background-color: lightgrey;
+    height: 100%;
+    border-radius: 12px;
+    text-align: center; 
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+
+/*Estilo DIV câmera*/
+#textVRP {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-top: -10%;
+    margin-inline: -7%;
+}
+
+#inputVRP {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#xVRP {width: 30%;}
+
+#yVRP {width: 30%;}
+
+#zVRP {width: 30%;}
+
+#textP {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-top: -10%;
+    margin-inline: -7%;
+}
+
+#inputP {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#xP {width: 30%;}
+
+#yP {width: 30%;}
+
+#zP {width: 30%;}
+
+/*Estilo DIV projeção*/
+#projecao {
+    background-color: lightgrey;
+    height: 100%;
+    border-radius: 12px;
+    text-align: center; 
+    margin-left: 1%;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#textCanva {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -2%;
+    margin-inline: -2%;
+}
+
+#inputCanva {
+    margin-top: 1%;
+    max-width: fit-content;
+}
+
+#altura {width: 45%;}
+
+#largura {width: 45%;}
+
+#textU{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -2%;
+    margin-inline: -2%;
+}
+
+#textV{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -2%;
+    margin-inline: -2%;
+}
+
+#inputU {
+    margin-top: 1%;
+    max-width: fit-content;
+}
+
+#inputV {
+    margin-top: 1%;
+    max-width: fit-content;
+}
+
+#umax{width: 45%;} 
+
+#umin {width: 45%;}
+
+#vmax {width: 45%;}
+
+#vmin {width: 45%;}
+
+/*Estilo DIV Iluminação*/
+#iluminacao {
+    background-color: lightgrey;
+    height: 100%;
+    border-radius: 12px;
+    text-align: center; 
+    margin-left: 1%;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#textL{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputL {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#textIla {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputIla {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#textIli {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputIli {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#textKa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputKa {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#textKd {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputKd {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#textKs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: -7%;
+    margin-inline: -6%;
+}
+
+#inputKs {
+    margin-top: -4%;
+    max-width: fit-content;
+}
+
+#Lx{width: 30%;}
+
+#Ly{width: 30%;}
+
+#Lz{width: 30%;}
+
+#ilaR{width: 30%;}
+
+#ilaG{width: 30%;}
+
+#ilaB{width: 30%;}
+
+#iliR{width: 30%;}
+
+#iliG{width: 30%;}
+
+#iliB{width: 30%;}
+
+#kaR{width: 30%;}
+
+#kaG{width: 30%;}
+
+#kaB{width: 30%;}
+
+#kdR{width: 30%;}
+
+#kdG{width: 30%;}
+
+#kdB{width: 30%;}
+
+#ksR{width: 30%;}
+
+#ksG{width: 30%;}
+
+#ksB{width: 30%;}
+
+/*Estilo títulos e textos*/
+#titulo {
+    margin-top: 10%;
+}
+
+h2 {
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    margin: 10px;
+    font-size: 13px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Estilo botões*/
+button {
+    border-color: black;
+    border-radius: 12px;
+    margin: 5px;
+    max-width: fit-content;
+    max-height: fit-content;
+    background-color:rgb(240, 240, 175);
+}

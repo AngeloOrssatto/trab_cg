@@ -1,44 +1,177 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>3D Rendering</title>
+        <title>teste</title>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
 
-    <body style="display: flex;" id="body"> 
+    <body style="display: flex">
         <div>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
             <script src="matrix.js" type="text/javascript"></script>
-            <script src="sketch.js" type="text/javascript"></script>
+            <script src="script.js" type="text/javascript"></script>
         </div>
-        <div style="font-size: small;"> 
+        <div id="parametro"> 
             <h2>Parâmetros do objeto</h2>
-            <p>Número de lados do poligono superior e inferior</p>
+            <p>Número de lados do polígono</p>
             <input type="number" id="nSides"></input>
             <p>Altura</p>
             <input type="number" id="height"></input>
-            <p>Raio da circunferencia superior</p>
+            <p>Raio da circunferência superior</p>
             <input type="number" id="radius"></input>
-            <p>Raio da circunferencia inferior</p>
+            <p>Raio da circunferência inferior</p>
             <input type="number" id="radius2"></input>
-        </div>
-        <div style="font-size: small;"> 
-            <h2>Parâmetros de câmera</h2>
+
+            <h2 id="titulo">Parâmetros de câmera</h2>
             <p>VRP</p>
-            <p>x</p><input type="number" id="xVRP"></input>
-            <p>y</p><input type="number" id="yVRP"></input>
-            <p>z</p><input type="number" id="zVRP"></input>
+            <div>
+                <div id="textVRP">
+                    <p>X</p>
+                    <p>Y</p>
+                    <p>Z</p>
+                </div>
+                <div id="inputVRP">
+                    <input type="number" id="xVRP"></input>
+                    <input type="number" id="yVRP"></input>
+                    <input type="number" id="zVRP"></input>
+                </div>
+            </div>
             <p>P</p>
-            <p>x</p><input type="number" id="xP"></input>
-            <p>y</p><input type="number" id="yP"></input>
-            <p>z</p><input type="number" id="zP"></input>
+            <div id="textP">
+                <p>X</p>
+                <p>Y</p>
+                <p>Z</p>
+            </div>
+            <div id="inputP">
+                <input type="number" id="xP"></input>
+                <input type="number" id="yP"></input>
+                <input type="number" id="zP"></input>
+            </div>
+
+            <h2 id="titulo">Tipo projeção</h2>
+            <div>
+                <input type="radio" id="perspectiva" name="proj" value="perspectiva" checked>
+                <label>Perspectiva</label>
+            </div>
+            <div>
+                <input type="radio" id="ortografica" name="proj" value="ortografica">
+                <label>Ortográfica</label>
+            </div>
         </div>
-        <div style="margin-right: 5px;">
+
+        <div id="projecao"> 
+            <h2>Parâmetros de projeção</h2>
+            <div id="textCanva">
+                <p>Altura</p>
+                <p>Largura</p>
+            </div>
+            <div id="inputCanva">
+                <input type="number" id="altura"></input>
+                <input type="number" id="largura"></input>
+            </div>
+            <div id="textU">
+                <p>Umax</p>
+                <p>Umin</p>
+            </div>
+            <div id="inputU">
+                <input type="number" id="umax"></input>
+                <input type="number" id="umin"></input>
+            </div>
+            <div id="textU">
+                <p>Vmax</p>
+                <p>Vmin</p>
+            </div>
+            <div id="inputV">
+                <input type="number" id="vmax"></input>
+                <input type="number" id="vmin"></input>
+            </div>
+            <p>Distância plano projeção</p><input type="number" id="dp"></input>
+            <p>Distância plano near</p><input type="number" id="dn"></input>
+            <p>Distância plano far</p><input type="number" id="df"></input>
+        </div>
+
+        <div id="Iluminacao">
+            <h2>Parâmetros de Iluminação</h2>
+            <p>Luz incidente</p>
+            <div id="textL">
+                <p>X</p>
+                <p>Y</p>
+                <p>Z</p>
+            </div>
+            <div id="inputL">
+                <input type="number" id="Lx">
+                <input type="number" id="Ly">
+                <input type="number" id="Lz">
+            </div>
+
+            <p>Intensidade luz ambiente</p>
+            <div id="textIla">
+                <p>R</p>
+                <p>G</p>
+                <p>B</p>
+            </div>
+            <div id="inputIla">
+                <input type="number" id="ilaR">
+                <input type="number" id="ilaG">
+                <input type="number" id="ilaB">
+            </div>
+            
+            <p>Intensidade fonte luminosa</p>
+            <div id="textIli">
+                <p>R</p>
+                <p>G</p>
+                <p>B</p>
+            </div>
+            <div id="inputIli">
+                <input type="number" id="iliR">
+                <input type="number" id="iliG">
+                <input type="number" id="iliB">
+            </div>
+            
+            <p>Coeficiente reflexão ambiente</p>
+            <div id="textKa">
+                <p>R</p>
+                <p>G</p>
+                <p>B</p>
+            </div>
+            <div id="inputKa">
+                <input type="number" id="kaR">
+                <input type="number" id="kaG">
+                <input type="number" id="kaB">
+            </div>
+            
+            <p>Coeficiente reflexão difusa</p>
+            <div id="textKd">
+                <p>R</p>
+                <p>G</p>
+                <p>B</p>
+            </div>
+            <div id="inputKd">
+                <input type="number" id="kdR">
+                <input type="number" id="kdG">
+                <input type="number" id="kdB">
+            </div>
+            
+            <p>Coeficiente reflexão especular</p>
+            <div id="textKs">
+                <p>R</p>
+                <p>G</p>
+                <p>B</p>
+            </div>
+            <div id="inputKs">
+                <input type="number" id="ksR">
+                <input type="number" id="ksG">
+                <input type="number" id="ksB">
+            </div>
+            
+            <p>N</p>
+            <input type="number" id="nLuz">
+        </div>
+
+        <div>
             <button onclick="constructScene()">Montar cena</button>
         </div>
-        <div style="margin-right: 10px;">
+        <div>
             <button onclick="cleanScence()">Limpar cena</button>
         </div>
     </body>
